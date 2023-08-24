@@ -7,11 +7,13 @@ class Post < ApplicationRecord
   after_destroy :posts_decrement
 
   def posts_increment
-    user.increment!(:post_counter)
+    user.increment!(:posts_counter)
   end
+
   def posts_decrement
-    user.decrement!(:post_counter)
+    user.decrement!(:posts_counter)
   end
+
   def recent_comments
     comments.order(created_at: :DESC).limit(5)
   end
