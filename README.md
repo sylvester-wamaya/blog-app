@@ -54,6 +54,7 @@ The site was built with Ruby on rails.
 - Add Post model
 - Add Comment model
 - Add Like model
+- Add custom database queryy methods on the models
 
 ## Getting Started
 
