@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :post do
-    subject {Post.new(author_id: 1, title: 'Hello', text: 'This is my first post')}
+
     let(:user) {User.create(name: 'Tom')}
+    subject {Post.new(user:, title: 'Hello', text: 'This is my first post')}
 
     before {subject.save}
 
@@ -46,5 +47,13 @@ RSpec.describe Post, type: :post do
                 post.destroy
             end.to change {user.reload.posts_counter}.by(-1)
         end
+    end
+    describe '#recent_comments' do
+        it 'Should return the 5 most recent comments' do
+            post = Post.create(user:, title: 'Hello', text: 'This is my first post', comments_counter: 5)
+            older_comment = Comment.create(post:, text: 'Older comment')
+            expect(post.recent_comments).not_to include(older_comment)
+        end
+
     end
   end
