@@ -56,6 +56,7 @@ The site was built with Ruby on rails.
 - Add Like model
 - Add custom database queryy methods on the models
 - Add validations and specs
+- Add views and controllers for Post and User
 
 ## Getting Started
 
