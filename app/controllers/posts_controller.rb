@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.find(parmas[:id])
+    @post = Post.find(parmas[:id])
   end
 
   end
