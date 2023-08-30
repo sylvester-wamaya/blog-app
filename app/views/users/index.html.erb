@@ -3,7 +3,13 @@
 
 <div id="users">
   <% @users.each do |user| %>
-    <%= render user %>
+    <div>
+    <img src='<%=user.photo%>' style="width:10vw; height:auto"/>
+    <div>
+    <strong><%=user.name%></strong>
+    <span><%= user.posts_counter%></span>
+    </div>
+    </div>
     <p>
       <%= link_to "Show this user", user %>
     </p>
