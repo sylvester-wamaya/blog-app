@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts_controller', type: :request do
-    let(:user) { User.create(name: 'Tom') }
+  let(:user) { User.create(name: 'Tom') }
 
   describe 'GET /users/:user_id/posts' do
     it 'Should return a success http status, correct template and include correct placeholder text' do
-      
       get "/users/#{user.id}/posts"
 
       expect(response).to have_http_status(:success)
