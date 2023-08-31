@@ -1,19 +1,31 @@
 
 <%= render @user %>
-
+<section>
+<p class="bio">
+<span>Bio</span>
 <%= @user.bio%>
-<br>
+</p>
+
 <%@user.posts.each_with_index do |post, index|%>
+<a href="/users/<%=@user.id%>/posts/<%=post.id%>">
+<div class="post">
+<span>
 <%=post.title%>
 #<%=index + 1%>
-<br>
+</span>
 <%=post.text%>
-<br>
-Comments: <%=post.comments_counter%>,
-Likes: <%=post.likes_counter%>
-<br>
+<p>
+Comments: <b><%=post.comments_counter%></b>,
+Likes: <b><%=post.likes_counter%></b>
+</p>
+</div>
+</a>
 <%end%>
-<button>See all posts</button>
-<br>
+<div class="btns">
+<button type="button">See all posts</button>
+ <button type="button"><%= link_to "Back to users", users_path %></button>
+ </div>
 
-  <%= link_to "Back to users", users_path %>
+</section>
+
+ 
