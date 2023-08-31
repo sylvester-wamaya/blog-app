@@ -4,7 +4,7 @@
 <%= @user.bio%>
 <br>
 <%@user.posts.each_with_index do |post, index|%>
-Post
+<%=post.title%>
 #<%=index + 1%>
 <br>
 <%=post.text%>

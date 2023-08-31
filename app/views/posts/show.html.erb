@@ -1,6 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<div>
+<%=@post.title%> #<%=@post.id%> by
+<%=@post.user.name%>
+<br>
+Comments: <%=@post.comments_counter%>,
+Likes: <%=@post.likes_counter%>
 
-<%= render @post %>
+<br>
+<%=@post.text%>
+<br>
+<%@post.comments.each_with_index do |comment, index| %>
+<%=comment.user.name%>:
+<%=comment.text%>
+<%=index+1%>
+<br>
+<%end%>
+</div>
+
+
 
 
   
