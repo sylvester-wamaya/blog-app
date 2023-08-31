@@ -64,8 +64,21 @@ button{
 
 
 }
-#post-comments{
+#post-comments, #comments-post{
     margin-bottom: 0;
 }
+#comments-post, p{
+    align-self:self-start;
+}
+.post-head{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    
 
-
+    
+}
+.post-head p{
+    align-self: normal;
+    
+}

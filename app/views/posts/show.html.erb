@@ -1,20 +1,29 @@
-<div>
+<div class="post" id="comments-post">
+<div class="post-head">
+<span>
 <%=@post.title%> #<%=@post.id%> by
 <%=@post.user.name%>
-<br>
+</span>
+<p>
 Comments: <%=@post.comments_counter%>,
 Likes: <%=@post.likes_counter%>
-
-<br>
+</p>
+</div>
 <%=@post.text%>
-<br>
+</div>
+<%if !@post.comments.empty?%>
+<div class="comments">
 <%@post.comments.each_with_index do |comment, index| %>
+<p>
 <%=comment.user.name%>:
 <%=comment.text%>
-<%=index+1%>
-<br>
+</p>
 <%end%>
 </div>
+<%end%>
+<a href="/users/<%=@post.user.id%>/posts"><button type="button">back to posts</button></a>
+
+
 
 
 
