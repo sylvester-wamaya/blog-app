@@ -1,5 +1,19 @@
 
 <%= render @user %>
 
+<%= @user.bio%>
+<br>
+<%@user.posts.each_with_index do |post, index|%>
+Post
+#<%=index + 1%>
+<br>
+<%=post.text%>
+<br>
+Comments: <%=post.comments_counter%>,
+Likes: <%=post.likes_counter%>
+<br>
+<%end%>
+<button>See all posts</button>
+<br>
 
   <%= link_to "Back to users", users_path %>
