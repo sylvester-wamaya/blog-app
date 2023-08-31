@@ -1,12 +1,12 @@
 
 <h1>Here is the list of all Users</h1>
 
-<div id="users">
+<section id="users">
   <% @users.each do |user| %>
-  <%=render user%>
+  <a href='/users/<%=user.id%>'><%=render user%></a>
     <p>
       <%= link_to "Show this user", user %>
     </p>
   <% end %>
-</div>
+</section>
 
