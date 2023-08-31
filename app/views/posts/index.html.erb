@@ -10,7 +10,7 @@
     <%=post.title%>
 #<%=index + 1%>
 </span>
-<%=post.text%>
+<%=post.text[0, 50]+"..."%>
 <p>
 Comments: <b><%=post.comments_counter%></b>,
 Likes: <b><%=post.likes_counter%></b>
@@ -33,7 +33,7 @@ Likes: <b><%=post.likes_counter%></b>
   <% end %>
   <button>next page</button>
   <%end%>
-  
+  <button type="button"><%= link_to "Back to user", @user %></button>
 </div>
 
 

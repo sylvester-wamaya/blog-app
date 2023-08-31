@@ -15,7 +15,7 @@
 <%=post.title%>
 #<%=index + 1%>
 </span>
-<%=post.text%>
+<%=post.text[0, 50]+"..."%>
 <p>
 Comments: <b><%=post.comments_counter%></b>,
 Likes: <b><%=post.likes_counter%></b>
