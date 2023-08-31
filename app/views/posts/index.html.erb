@@ -1,11 +1,25 @@
-<p style="color: green"><%= notice %></p>
 
 <h1>Here is the list of all Posts</h1>
 
 <div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
+<%=render @user%>
+  <% @posts.each_with_index do |post, index| %>
+    Post
+#<%=index + 1%>
+<br>
+<%=post.text%>
+<br>
+Comments: <%=post.comments_counter%>,
+Likes: <%=post.likes_counter%>
+<br>
+<%post.comments.each_with_index do |comment, index| %>
+<%=comment.user.name%>:
+<%=comment.text%>
+<%=index+1%>
+<br>
+<%end%>
   <% end %>
+  <button>Pagination</button>
 </div>
 
 
