@@ -1,14 +1,39 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Here is the list of all Posts</h1>
-
 <div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+<%=render @user%>
+<%if @posts.empty?%>
+<h2>No posts</h2>
+<%else%>
+  <% @posts.each_with_index do |post, index| %>
+  <a href="/users/<%=@user.id%>/posts/<%=post.id%>">
+  <div class="post" id="post-comments">
+  <span>
+    <%=post.title%>
+#<%=index + 1%>
+</span>
+<%=post.text[0, 50]+"..."%>
+<p>
+Comments: <b><%=post.comments_counter%></b>,
+Likes: <b><%=post.likes_counter%></b>
+</p>
+</div>
+</a>
+<%if !post.comments.empty?%>
+
+<div class="comments">
+
+<%post.recent_comments.each_with_index do |comment| %>
+
+<p>
+<%=comment.user.name%>:
+<%=comment.text%>
+<p> 
+<%end%>
+<%end%>
+</div>
   <% end %>
+  <button>next page</button>
+  <%end%>
+  <button type="button"><%= link_to "Back to user", @user %></button>
 </div>
 
 

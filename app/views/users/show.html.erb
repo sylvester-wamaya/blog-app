@@ -1,5 +1,35 @@
 
 <%= render @user %>
+<section>
+<p class="bio">
+<span>Bio</span>
+<%= @user.bio%>
+</p>
+<%if @user.recent_posts.empty?%>
+<h2>No posts</h2>
+<%else%>
+<%@user.recent_posts.each_with_index do |post, index|%>
+<a href="/users/<%=@user.id%>/posts/<%=post.id%>">
+<div class="post">
+<span>
+<%=post.title%>
+#<%=index + 1%>
+</span>
+<%=post.text[0, 50]+"..."%>
+<p>
+Comments: <b><%=post.comments_counter%></b>,
+Likes: <b><%=post.likes_counter%></b>
+</p>
+</div>
+</a>
+<%end%>
+<a href="/users/<%=@user.id%>/posts"><button type="button">See all posts</button></a>
+<%end%>
 
 
-  <%= link_to "Back to users", users_path %>
+ <button type="button"><%= link_to "Back to users", users_path %></button>
+ 
+
+</section>
+
+ 

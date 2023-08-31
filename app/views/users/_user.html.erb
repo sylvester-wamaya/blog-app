@@ -1,17 +1,9 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
+    <div class="user-container">
 
-  <p>
-    <strong>Photo:</strong>
-    <img src='<%= user.photo %>' style='width: 25vw; height: auto'/>
-  </p>
-
-  <p>
-    <strong>Bio:</strong>
-    <%= user.bio %>
-  </p>
-
-</div>
+    <img src='<%=user.photo%>' style="width:auto; height:10vw"/>
+    
+    <div class="user">
+    <strong><%=user.name%></strong>
+    <span>Number of posts: <b><%= user.posts_counter%></b></span>
+    </div>
+    </div>

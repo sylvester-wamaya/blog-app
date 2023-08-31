@@ -1,6 +1,31 @@
-<p style="color: green"><%= notice %></p>
+<div class="post" id="comments-post">
+<div class="post-head">
+<span>
+<%=@post.title%> #<%=@post.id%> by
+<%=@post.user.name%>
+</span>
+<p>
+Comments: <%=@post.comments_counter%>,
+Likes: <%=@post.likes_counter%>
+</p>
+</div>
+<%=@post.text%>
+</div>
+<%if !@post.comments.empty?%>
+<div class="comments">
+<%@post.comments.each_with_index do |comment, index| %>
+<p>
+<%=comment.user.name%>:
+<%=comment.text%>
+</p>
+<%end%>
+</div>
+<%end%>
+<a href="/users/<%=@post.user.id%>/posts"><button type="button">back to posts</button></a>
 
-<%= render @post %>
+
+
+
 
 
   
