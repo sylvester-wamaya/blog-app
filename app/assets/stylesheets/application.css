@@ -1,84 +1,98 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    box-sizing: border-box;
-    padding: 2%;
-}
-a{
-    text-decoration: none;
-    color: #000;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.user-container, .user{    
-    display: flex;
-    gap: 3%;
-    align-items: center;
-    width:100%;
-}
-.user-container{
-    margin-bottom: 2%;
-
-}
-.user-container:hover, .post:hover, button:hover{
-    background-color: rgba(10, 191, 76, 0.05);
-    cursor: pointer;
-}
-.user{
-    padding: 1% 0.5%;
-    justify-content: space-between;
-    height: 8vw;
-    border: solid 1px #000;
-}
-.user span{
-    align-self: end;
-}
-.user strong{
-    font-size: 150%;
-}
-.bio, .post, .comments{
-    padding: 1% 0.5%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2%;
-    border: solid 1px #000;
-    
-}
-.bio span, .post span{
-    margin-bottom: 2%;
-}
-.post p{
-    align-self: end;
-    justify-self: end;
-    font-size: 80%;
+body {
+  box-sizing: border-box;
+  padding: 2%;
 }
 
-button{
-    background-color: #fff;
-    border: solid 1px #000;
-    padding: 1% 0.5%;
-    border-radius: 5px;
-    margin: 0.5% auto;
-    display: block;
+a {
+  text-decoration: none;
+  color: #000;
+}
 
+.user-container,
+.user {
+  display: flex;
+  gap: 3%;
+  align-items: center;
+  width: 100%;
+}
 
+.user-container {
+  margin-bottom: 2%;
 }
-#post-comments, #comments-post{
-    margin-bottom: 0;
-}
-#comments-post, p{
-    align-self:self-start;
-}
-.post-head{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    
 
-    
+.user {
+  padding: 1% 0.5%;
+  justify-content: space-between;
+  height: 8vw;
+  border: solid 1px #000;
 }
-.post-head p{
-    align-self: normal;
-    
+
+.user span {
+  align-self: end;
+}
+
+.user strong {
+  font-size: 150%;
+}
+
+.bio,
+.post,
+.comments {
+  padding: 1% 0.5%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+  border: solid 1px #000;
+}
+
+.bio span,
+.post span {
+  margin-bottom: 2%;
+}
+
+p {
+  align-self: self-start;
+}
+
+.post p {
+  align-self: end;
+  justify-self: end;
+  font-size: 80%;
+}
+
+button {
+  background-color: #fff;
+  border: solid 1px #000;
+  padding: 1% 0.5%;
+  border-radius: 5px;
+  margin: 0.5% auto;
+  display: block;
+}
+
+#post-comments,
+#comments-post {
+  margin-bottom: 0;
+}
+
+#comments-post,
+.post-head {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.post-head p {
+  align-self: normal;
+}
+
+.user-container:hover,
+.post:hover,
+button:hover {
+  background-color: rgba(10, 191, 76, 0.05);
+  cursor: pointer;
 }
