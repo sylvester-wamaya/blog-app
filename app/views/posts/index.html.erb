@@ -1,25 +1,39 @@
-
-<h1>Here is the list of all Posts</h1>
-
 <div id="posts">
 <%=render @user%>
+<%if @posts.empty?%>
+<h2>No posts</h2>
+<%else%>
   <% @posts.each_with_index do |post, index| %>
+  <a href="/users/<%=@user.id%>/posts/<%=post.id%>">
+  <div class="post" id="post-comments">
+  <span>
     <%=post.title%>
 #<%=index + 1%>
-<br>
+</span>
 <%=post.text%>
-<br>
-Comments: <%=post.comments_counter%>,
-Likes: <%=post.likes_counter%>
-<br>
-<%post.comments.each_with_index do |comment, index| %>
+<p>
+Comments: <b><%=post.comments_counter%></b>,
+Likes: <b><%=post.likes_counter%></b>
+</p>
+</div>
+</a>
+<%if !post.comments.empty?%>
+
+<div class="comments">
+
+<%post.recent_comments.each_with_index do |comment| %>
+
+<p>
 <%=comment.user.name%>:
 <%=comment.text%>
-<%=index+1%>
-<br>
+<p> 
 <%end%>
+<%end%>
+</div>
   <% end %>
-  <button>Pagination</button>
+  <button>next page</button>
+  <%end%>
+  
 </div>
 
 

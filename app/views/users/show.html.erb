@@ -5,8 +5,10 @@
 <span>Bio</span>
 <%= @user.bio%>
 </p>
-
-<%@user.posts.each_with_index do |post, index|%>
+<%if @user.recent_posts.empty?%>
+<h2>No posts</h2>
+<%else%>
+<%@user.recent_posts.each_with_index do |post, index|%>
 <a href="/users/<%=@user.id%>/posts/<%=post.id%>">
 <div class="post">
 <span>
@@ -21,10 +23,12 @@ Likes: <b><%=post.likes_counter%></b>
 </div>
 </a>
 <%end%>
-<div class="btns">
-<button type="button">See all posts</button>
+<a href="/users/<%=@user.id%>/posts"><button type="button">See all posts</button></a>
+<%end%>
+
+
  <button type="button"><%= link_to "Back to users", users_path %></button>
- </div>
+ 
 
 </section>
 
