@@ -16,12 +16,12 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-      flash.now[:success] = "Post has been saved successfully 👏"
+      flash.now[:success] = 'Post has been saved successfully 👏'
       redirect_to user_posts_url(current_user)
-      
+
     else
-      flash.now[:error] = "Post save failed❗"
-      render new   
+      flash.now[:error] = 'Post save failed❗'
+      render new
     end
   end
 
