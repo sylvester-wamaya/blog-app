@@ -116,3 +116,9 @@ button:hover {
   height: 35vh;
 }
 
+#comment_text{
+  width: 80vw;
+  padding: 0.5%;
+
+}
+
