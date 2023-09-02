@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @user = User.includes(posts: { comments: :user }).find(params[:user_id])
-    @posts = @user.posts
+    @user = current_user
+    @posts = @user.posts.includes(:comments)
   end
 
   def show
@@ -13,11 +13,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = @user.posts.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       flash.now[:success] = "Post has been saved successfully 👏"
-      redirect_to user_posts_url(@user)
+      redirect_to user_posts_url(current_user)
       
     else
       flash.now[:error] = "Post save failed❗"
