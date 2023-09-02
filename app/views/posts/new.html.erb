@@ -1,0 +1,5 @@
+<%= form_model: @post, url:user_posts_path(current_user), html: {class: 'form-control'}, local: true do |f|%>
+<%=f.text_field :title, placeholder: "Title"%>
+<%=f.text_area :text, placeholder: "Content"%>
+<%=f.submit "Submit"%>
+<%end%>
