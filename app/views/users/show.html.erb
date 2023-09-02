@@ -5,6 +5,7 @@
 <span>Bio</span>
 <%= @user.bio%>
 </p>
+<a class="add-post" href="/users/<%=@user.id%>/posts/new">Create a new post</a>
 <%if @user.recent_posts.empty?%>
 <h2>No posts</h2>
 <%else%>

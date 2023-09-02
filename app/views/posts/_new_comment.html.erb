@@ -1,0 +1,7 @@
+<div class="inline">
+<%=form_with model: current_user.comments.build, url: user_post_comments_path(@post.user, @post), html: {class: 'form-control'} do |f|%>
+<%=f.text_field :text, placeholder: 'Add comment'%>
+<%=f.submit "submit"%>
+<%end%>
+<%= button_to '❤', user_post_likes_path(current_user, @post), method: :post, remote: true, class:"like" %>
+</div>
