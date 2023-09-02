@@ -57,6 +57,8 @@ The site was built with Ruby on rails.
 - Add custom database queryy methods on the models
 - Add validations and specs
 - Add views and controllers for Post and User
+- Add comment section
+- Implement liking a post
 
 ## Getting Started
 
@@ -114,6 +116,7 @@ Run the `rspec spec` command in your console to run the tests.
 - Add Login page
 - Add authentication
 - Add simple UI
+- Implement deleting a post and comments
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
