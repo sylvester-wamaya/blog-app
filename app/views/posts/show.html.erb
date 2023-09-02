@@ -21,6 +21,7 @@ Likes: <%=@post.likes_counter%>
 <%end%>
 </div>
 <%end%>
+<a class="add-post" href="/users/<%=@post.user.id%>/posts/new">Create a new post</a>
 <a href="/users/<%=@post.user.id%>/posts"><button type="button">back to posts</button></a>
 
 
