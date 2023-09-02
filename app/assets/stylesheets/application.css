@@ -121,4 +121,13 @@ button:hover {
   padding: 0.5%;
 
 }
+.like{
+  border: none;
+  display: inline;
+  font-size: 120%;
+  margin: 0;
+  padding: 0;
+  color: rgb(180, 6, 6);
+}
+
 

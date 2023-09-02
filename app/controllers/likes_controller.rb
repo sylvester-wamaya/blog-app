@@ -1,17 +1,14 @@
 class LikesController < ApplicationController
     def create
       @post = Post.find(params[:post_id])
-      existing_like = @post.likes.find_by(user: current_user)
+      @like = @post.likes.new(author_id:current_user.id, post_id: @post.id)
   
-      if existing_like
-        existing_like.destroy
-        @post.decrement!(:likes_counter)
-        flash.now[:success] = 'Unliked'
+      if @like.save
+        flash.now[:success] = 'liked'
       else
-        current_user.likes.create(post: @post)
-        flash.now[:success] = 'Liked'
+        flash.now[:success] = 'Failed to like'
       end
   
-      redirect_to user_post_path(@post.author, @post)
+      redirect_to user_post_path(@post.user, @post)
     end
   end
