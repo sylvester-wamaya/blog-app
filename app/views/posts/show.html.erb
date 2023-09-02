@@ -11,6 +11,12 @@ Likes: <%=@post.likes_counter%>
 </div>
 <%=@post.text%>
 </div>
+<div>
+<%=form_with model: current_user.comments.build, url: user_post_comments_path(@post.user, @post), html: {class: 'form-control'} do |f|%>
+<%=f.text_field :text, placeholder: 'Add comment'%>
+<%=f.submit "submit"%>
+<%end%>
+</div>
 <%if !@post.comments.empty?%>
 <div class="comments">
 <%@post.comments.each_with_index do |comment, index| %>
