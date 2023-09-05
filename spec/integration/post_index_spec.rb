@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.describe 'User posts index page', type: :feature do
     before(:each) do
         @user1 = User.create(name:'Tom', photo:'https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=5OK7djfD3cnNmQ-DR0iQzF-vmA-iTNN1TbuEyCG1DfA=', bio: 'Tom bio')
+        @user2 = User.create(name: 'Lilly', photo: 'https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?s=1024x1024&w=is&k=20&c=v0FzN5RD19wlMvrkpUE6QKHaFTt5rlDSqoUV1vrFbN4=', bio: 'Lilly bio')
         @post1 = Post.create(author_id: @user1.id, title: 'Hello', text: 'This is my first post')
         @post2 = Post.create(author_id: @user1.id, title: 'Hi', text: 'This is my second post')
+        @comment1 = Comment.create(post_id: @post1.id, author_id: @user2.id, text: 'Hi Tom!')
+        @comment2 = Comment.create(post_id: @post1.id, author_id: @user2.id, text: 'Hello Tom!')
 
         visit user_posts_path(@user1)
     end
@@ -20,16 +23,23 @@ RSpec.describe 'User posts index page', type: :feature do
         end
     end
     describe "Display posts" do
-        it 'Should display all posts' do
+        it 'Should display all posts content' do
+            expect(page).to have_content(@post1.text[0,50])
+            expect(page).to have_content(@post2.text[0,50])
+        end    
+
+        it 'Should display the all posts' do
             expect(page).to have_content(@post1.text)
             expect(page).to have_content(@post2.text)
         end
-    end
-    
 
-    it 'Should display the all posts' do
-        expect(page).to have_content(@post1.text)
-        expect(page).to have_content(@post2.text)
+        it 'Should display user comment counter and likes counter' do
+            expect(page).to have_content("Comments: #{@post1.comments.count}, Likes: #{@post1.likes.count}")
+        end
+        it 'Should list latest comments' do
+            expect(page).to have_content(@comment1.text)
+            expect(page).to have_content(@comment2.text)
+        end
     end
 
     describe "Test links" do
