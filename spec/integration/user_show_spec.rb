@@ -25,6 +25,10 @@ RSpec.describe 'User show page', type: :feature do
             click_link 'See all posts'
             expect(page).to have_current_path(user_posts_path(@user1))
         end
+        it 'Should redirect to users when Back to users is clicked' do
+            click_link 'Back to users'
+            expect(page).to have_current_path(users_path)
+        end
 
     end
 end
