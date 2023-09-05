@@ -18,5 +18,9 @@ RSpec.describe 'User index page', type: :feature do
             expect(page).to have_css("img[src*='https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?s=1024x1024&w=is&k=20&c=v0FzN5RD19wlMvrkpUE6QKHaFTt5rlDSqoUV1vrFbN4=']", visible: :visible)
 
         end
+        it 'Should display users post counter' do
+            expect(page).to have_content("Number of posts: #{@user1.posts_counter}")
+            expect(page).to have_content("Number of posts: #{@user2.posts_counter}")
+        end
     end
 end
