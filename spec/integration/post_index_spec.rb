@@ -6,7 +6,7 @@ RSpec.describe 'User posts index page', type: :feature do
         @post1 = Post.create(author_id: @user1.id, title: 'Hello', text: 'This is my first post')
         @post2 = Post.create(author_id: @user1.id, title: 'Hi', text: 'This is my second post')
 
-        visit user_path(@user1)
+        visit user_posts_path(@user1)
     end
     describe 'Display a specific user details and posts' do
         it 'Should display the name of the user' do
@@ -19,4 +19,30 @@ RSpec.describe 'User posts index page', type: :feature do
             expect(page).to have_content("Number of posts: #{@user1.posts.count}")
         end
     end
+    describe "Display posts" do
+        it 'Should display all posts' do
+            expect(page).to have_content(@post1.text)
+            expect(page).to have_content(@post2.text)
+        end
+    end
+    
+
+    it 'Should display the all posts' do
+        expect(page).to have_content(@post1.text)
+        expect(page).to have_content(@post2.text)
+    end
+
+    describe "Test links" do
+        it 'Should redirect to a specific post when post title is clicked' do
+            click_link @post1.title
+            expect(page).to have_current_path(user_post_path(@user1, @post1))
+        end
+
+        it 'Should redirect to the user when Back to user is clicked' do
+            click_link 'Back to user'
+            expect(page).to have_current_path(user_path(@user1))
+        end
+    end
 end
+
+
