@@ -1,0 +1,17 @@
+require 'rails_helper'
+
+RSpec.describe 'User index page', type: :feature do
+    before(:each) do
+        @user1 = User.create(name:'Tom', photo:'https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=5OK7djfD3cnNmQ-DR0iQzF-vmA-iTNN1TbuEyCG1DfA=', bio: 'Tom bio')
+        @user2 = User.create(name: 'Lilly', photo: 'https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?s=1024x1024&w=is&k=20&c=v0FzN5RD19wlMvrkpUE6QKHaFTt5rlDSqoUV1vrFbN4=', bio: 'Lilly bio')
+
+        visit users_path
+
+    end
+    describe 'Displaying user information' do
+        it 'Should display names of all the users' do
+            expect(page).to have_content('Tom')
+            expect(page).to have_content('Lilly')
+        end
+    end
+end
