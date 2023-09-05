@@ -9,7 +9,7 @@ RSpec.describe 'Posts_controller', type: :request do
 
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:index)
-      expect(response.body).to include('Here is the list of all Posts')
+      expect(response.body).to include(user.name)
     end
   end
 
