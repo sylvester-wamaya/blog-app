@@ -4,7 +4,7 @@ RSpec.describe 'User show page', type: :feature do
     before(:each) do
         @user1 = User.create(name:'Tom', photo:'https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=5OK7djfD3cnNmQ-DR0iQzF-vmA-iTNN1TbuEyCG1DfA=', bio: 'Tom bio')
         @post1 = Post.create(author_id: @user1.id, title: 'Hello', text: 'This is my first post')
-        @post2 = Post.create(author_id: @user1.id, title: 'Hello', text: 'This is my first post')
+        @post2 = Post.create(author_id: @user1.id, title: 'Hi', text: 'This is my second post')
 
         visit user_path(@user1)
     end
@@ -15,12 +15,23 @@ RSpec.describe 'User show page', type: :feature do
         it 'Should display the user photo' do
             expect(page).to have_css("img[src*='https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=5OK7djfD3cnNmQ-DR0iQzF-vmA-iTNN1TbuEyCG1DfA=']", visible: :visible)
         end
+        it 'Should display the bio of the user' do
+            expect(page).to have_content(@user1.bio)
+        end
         it 'Should display the posts likes counter and comments counter' do
             expect(page).to have_content("Comments: #{@post1.comments_counter}, Likes: #{@post1.likes_counter}")
             expect(page).to have_content("Comments: #{@post2.comments_counter}, Likes: #{@post2.likes_counter}")
         end
     end
     describe "Test links" do
+        # it 'Should redirect to create post when Create a new post is clicked' do
+        #     click_link 'Create a new post'
+        #     expect(page).to have_current_path(new_post_path)
+        # end
+        it 'Should redirect to a specific post when post title is clicked' do
+            click_link @post1.title
+            expect(page).to have_current_path(user_post_path(@user1, @post1))
+        end
         it 'Should redirect to user posts when See all posts is clicked' do
             click_link 'See all posts'
             expect(page).to have_current_path(user_posts_path(@user1))
