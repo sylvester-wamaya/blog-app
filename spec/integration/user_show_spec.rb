@@ -6,6 +6,7 @@ RSpec.describe 'User show page', type: :feature do
                          photo: 'https://cdn.pixabay.com/photo/2015/06/22/08/40/child-817373_1280.jpg', bio: 'Tom bio')
     @post1 = Post.create(author_id: @user1.id, title: 'Hello', text: 'This is my first post')
     @post2 = Post.create(author_id: @user1.id, title: 'Hi', text: 'This is my second post')
+    @post3 = Post.create(author_id: @user1.id, title: 'Third post', text: 'This is my Third post')
 
     visit user_path(@user1)
   end
@@ -24,9 +25,10 @@ RSpec.describe 'User show page', type: :feature do
     it 'Should display the bio of the user' do
       expect(page).to have_content(@user1.bio)
     end
-    it 'Should display the first 2 posts' do
+    it 'Should display the first 3 posts' do
       expect(page).to have_content(@post1.text)
       expect(page).to have_content(@post2.text)
+      expect(page).to have_content(@post3.text)
     end
   end
   describe 'Test links' do
