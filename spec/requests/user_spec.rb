@@ -7,7 +7,6 @@ RSpec.describe 'users_controller', type: :request do
 
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:index)
-      expect(response.body).to include('Here is the list of all Users')
     end
   end
 

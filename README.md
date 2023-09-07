@@ -109,6 +109,13 @@ Run the `rspec spec` command in your console to run the tests.
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/sylvester-wamaya-b11a93112/)
 
 
+👤 **Moyasi**
+
+- GitHub: [MoyasiGinko](https://github.com/MoyasiGinko)
+- Twitter: [moyasi_ginko](https://twitter.com/moyasi_ginko)
+- LinkedIn: [moyasi](https://www.linkedin.com/in/moyasi)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
