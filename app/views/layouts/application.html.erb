@@ -16,6 +16,9 @@
       <% if user_signed_in? %>
         <%= button_to "Profile", edit_user_registration_path, class: "btn" %>
         <%= button_to "Sign out", destroy_user_session_path, class: 'btn', :method => :delete %>
+        <% else %>
+        <%= button_to "Sign In", new_user_session_path, class: "btn" %>
+
 
       <% end %>
       </div>
