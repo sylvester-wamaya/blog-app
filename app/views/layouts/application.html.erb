@@ -14,7 +14,9 @@
   <p class="alert"><%= alert %></p>
   <div id="sign-out">
       <% if user_signed_in? %>
-          <%= button_to "Sign out", destroy_user_session_path, class: 'btn', :method => :delete %>
+        <%= button_to "Profile", edit_user_registration_path, class: "btn" %>
+        <%= button_to "Sign out", destroy_user_session_path, class: 'btn', :method => :delete %>
+
       <% end %>
       </div>
     <%= yield %>
