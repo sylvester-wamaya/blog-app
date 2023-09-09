@@ -10,7 +10,20 @@ class Ability
     #   else
     #     can :read, :all
     #   end
-    #
+    if user.role == 'admin'
+      can :manage, :all
+    else
+      can :read, :all
+      can :create, Post, author_id: user.id
+      can :create, Comment, author_id: user.id
+      can :create, Like
+      can :destroy, Post do |post|
+        post.author_id == user.id
+      end
+      can :destroy, Comment do |comment|
+        comment.author_id == user.id
+      end
+    end
     # The first argument to `can` is the action you are giving the user 
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
