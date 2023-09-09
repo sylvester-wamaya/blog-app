@@ -2,26 +2,22 @@
 <html>
   <head>
     <title>Blog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
-
   <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div id="sign-out">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div id="sign-out">
       <% if user_signed_in? %>
+        <%= button_to "Sign out", destroy_user_session_path, class: 'btn', method: :delete %>
         <%= link_to "Profile", edit_user_registration_path, class: "btn" %>
-        <%= button_to "Sign out", destroy_user_session_path, class: 'btn', :method => :delete %>
-        <% else %>
+      <% else %>
         <%= button_to "Sign In", new_user_session_path, class: "btn" %>
-
-
       <% end %>
-      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
