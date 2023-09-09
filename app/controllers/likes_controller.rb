@@ -1,24 +1,14 @@
 class LikesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @like = @post.likes.build(author: current_user)
+    @like = @post.likes.new(author_id: current_user.id, post_id: @post.id)
 
-    if @like.save
-      redirect_to user_post_path(@post.author, @post), notice: 'Liked!'
-    else
-      redirect_to user_post_path(@post.author, @post), alert: 'Like failed.'
-    end
-  end
+    flash.now[:success] = if @like.save
+                            'liked'
+                          else
+                            'Failed to like'
+                          end
 
-  def destroy
-    @post = Post.find(params[:post_id])
-    @like = @post.likes.find_by(author: current_user)
-
-    if @like
-      @like.destroy
-      redirect_to user_post_path(@post.user, @post), notice: 'Unliked!'
-    else
-      redirect_to user_post_path(@post.user, @post), alert: 'Unlike failed.'
-    end
+    redirect_to user_post_path(@post.user, @post)
   end
 end
