@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: :index, :show
+  load_and_authorize_resource
   def index
     @user = current_user
     @posts = @user.posts.includes(:comments)
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-
+ 
     if @post.save
       flash.now[:success] = 'Post has been saved successfully 👏'
       redirect_to user_posts_url(current_user)
@@ -24,6 +24,11 @@ class PostsController < ApplicationController
       flash.now[:error] = 'Post save failed❗'
       render new
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to user_posts_path, notice: 'Post was successfully deleted.'
   end
 
   private
