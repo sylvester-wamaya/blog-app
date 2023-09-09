@@ -17,6 +17,11 @@
 <p>
 Comments: <b><%=post.comments_counter%></b>,
 Likes: <b><%=post.likes_counter%></b>
+<% if can? :destroy, post %>
+                    <%= form_with url: user_post_path(@user, post), method: :delete, remote: true do |form| %>
+                        <%= form.submit "Delete", class: 'btn' %>
+                    <% end %>
+                <% end %>
 </p>
 </div>
 </a>

@@ -59,6 +59,8 @@ The site was built with Ruby on rails.
 - Add views and controllers for Post and User
 - Add comment section
 - Implement liking a post
+- Implement athentication on signup and sign in
+- Implement Authorization
 
 ## Getting Started
 
@@ -120,10 +122,8 @@ Run the `rspec spec` command in your console to run the tests.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Add Login page
-- Add authentication
-- Add simple UI
-- Implement deleting a post and comments
+
+- Implement API end points
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

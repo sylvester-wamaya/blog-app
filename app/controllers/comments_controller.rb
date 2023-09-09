@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
@@ -9,6 +10,13 @@ class CommentsController < ApplicationController
     else
       redirect_to user_post_path(@post.user, @post), alert: 'Failed to save comment'
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @comment.destroy
+    redirect_to user_post_path(@post.user, @post), notice: 'Comment was successfully deleted.'
   end
 
   private
