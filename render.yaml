@@ -1,10 +1,11 @@
 databases:
   - name: postgres
+    plan: free
     ipAllowList: []
 
 services:
   - type: web
-    name: rails
+    name: blog
     plan: free
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
