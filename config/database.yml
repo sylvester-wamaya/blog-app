@@ -26,7 +26,7 @@ development:
   <<: *default
   database: blog_development
   username: postgres
-  password: Wa.ma.84
+  password: <%= ENV["BLOG_DATABASE_PASSWORD"] %>
   host: localhost
 
   # The specified database role being used to connect to postgres.
@@ -62,7 +62,7 @@ development:
 test:
   <<: *default
   username: postgres
-  password: Wa.ma.84
+  password: <%= ENV["BLOG_DATABASE_PASSWORD"] %>
   host: localhost
   database: blog_test
 
